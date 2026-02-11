@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="en">
+<head>
+<link rel="stylesheet" href="style.css">
+
+
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Our Moments</title>
+  <meta name="description" content="A private gallery of our favorite moments." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="hero">
+    <div class="overlay"></div>
+    <div class="hero-content">
+      <h1>Our Moments 💙 I love you Andrea</h1>
+      <p>A little gallery to remember the smiles. 💙</p>
+      <a class="btn" href="#gallery">View Gallery</a>
+    </div>
+  </header>
+
+  <main>
+    <section id="about" class="about">
+      <h2>About This Page</h2>
+      <p>
+        I made this mini-website to collect some of our favorite photos in one cozy place.
+        It’s simple, fast, and made with love.
+      </p>
+    </section>
+
+    <section id="gallery" class="gallery">
+      <h2>Gallery</h2>
+      <div class="grid">
+        <!-- Replace placeholder images with your own files inside /images -->
+        <figure class="card">
+          <img src="images/photo1.jpg" alt="Memory 1" loading="lazy" />
+          <figcaption>3rd meet? haha</figcaption>
+        </figure>
+        <figure class="card">
+          <img src="images/photo2.jpg" alt="Memory 2" loading="lazy" />
+          <figcaption>Meeting with Raymond</figcaption>
+        </figure>
+        <figure class="card">
+          <img src="images/photo3.jpg" alt="Memory 3" loading="lazy" />
+          <figcaption>Selfie haha</figcaption>
+        </figure>
+        <figure class="card">
+          <img src="images/photo4.jpg" alt="Memory 4" loading="lazy" />
+          <figcaption>2nd time kumain with me</figcaption>
+        </figure>
+        <figure class="card">
+          <img src="images/photo5.jpg" alt="Memory 5" loading="lazy" />
+          <figcaption>No comment! :)</figcaption>
+        </figure>
+        <figure class="card">
+          <img src="images/photo6.jpg" alt="Memory 4" loading="lazy" />
+          <figcaption>2nd time kumain with me kaya I capture moments</figcaption>
+        </figure>
+        <figure class="card">
+          <img src="images/photo7.jpg" alt="Memory 4" loading="lazy" />
+          <figcaption>I love you</figcaption>
+        </figure>
+        <figure class="card">
+          <img src="images/photo8.jpg" alt="Memory 4" loading="lazy" />
+          <figcaption>1st cuddle with pics</figcaption>
+        </figure>
+        <figure class="card">
+          <img src="images/photo9.jpg" alt="Memory 4" loading="lazy" />
+          <figcaption>More cuddle</figcaption>
+        </figure>
+        <figure class="card">
+          <img src="images/photo10.jpg" alt="Memory 4" loading="lazy" />
+          <figcaption>More cuddle</figcaption>
+        </figure>
+        <figure class="card">
+          <img src="images/photo11.jpg" alt="Memory 4" loading="lazy" />
+          <figcaption>More cuddle</figcaption>
+        </figure>
+        <figure class="card">
+          <img src="images/photo12.jpg" alt="Memory 4" loading="lazy" />
+          <figcaption>3rd time date with kain I love you</figcaption>
+        </figure>
+        <figure class="card">
+          <img src="images/photo13.jpg" alt="Memory 4" loading="lazy" />
+          <figcaption>So damn pretty</figcaption>
+        </figure>
+        <figure class="card">
+          <img src="images/photo14.jpg" alt="Memory 4" loading="lazy" />
+          <figcaption>I love you so much Baby!💖</figcaption>
+        </figure>
+        <figure class="card">
+          <img src="images/photo15.jpg" alt="Memory 4" loading="lazy" />
+          <figcaption>3rd time date with kain I love you</figcaption>
+        </figure>
+        <figure class="card">
+          <img src="images/photo16.jpg" alt="Memory 4" loading="lazy" />
+          <figcaption>3rd time date with kain I love you</figcaption>
+        </figure>
+      </div>
+	
+    </section>
+
+    <section class="notes">
+      <h2>Notes</h2>
+      <ul>
+        <li>Tap any photo to view it larger.</li>
+        <li>You can add as many photos as you like—just drop them into the <code>/images</code> folder and duplicate a card.</li>
+        <li>Keep this private unless everyone in the photos is happy to share it.</li>
+      </ul>
+    </section>
+
+
+
+<section id="love-check" class="love-check" aria-labelledby="love-title">
+  <h2 id="love-title">Do you love me?</h2>
+  <div class="love-actions">
+    <button class="btn yes" id="love-yes" aria-controls="love-result">Yes 💖</button>
+    <button class="btn no" id="love-no">No 😅</button>
+  </div>
+
+  <!-- Hidden result area -->
+  <div id="love-result" class="love-result" hidden>
+    <div class="love-card">
+      <h3>I love you more than you can imagine. 💙</h3>
+      <p>
+        Every moment with you makes my world brighter. Here’s one of my favorites:
+      </p>
+      <figure>
+        <!-- TODO: replace images/love-photo.jpg with your photo filename -->
+        <img src="images/love-photo.jpg" alt="A favorite memory of us together" loading="lazy" />
+        <figcaption>Always you, always us.</figcaption>
+      </figure>
+      <textarea id="love-note" placeholder="Write a little note for me here…" rows="3"></textarea>
+
+
+
+  </main>
+
+  <footer class="footer">
+    <p>Private gallery — please don’t share without consent. created by ItsFreakingVermon © <span id="year"></span></p>
+  </footer>
+
+  <div id="lightbox" class="lightbox" aria-hidden="true" role="dialog">
+    <button class="close" aria-label="Close" onclick="closeLightbox()">×</button>
+    <img id="lightbox-img" alt="Expanded view" />
+    <p id="lightbox-caption"></p>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
