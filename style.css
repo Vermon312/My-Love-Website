@@ -21,6 +21,9 @@ main { max-width: 1100px; margin: -3rem auto 4rem; padding: 0 1rem; }
 .about, .notes { background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.06); border-radius: 1rem; padding: 1.25rem 1.25rem; backdrop-filter: blur(6px); box-shadow: 0 10px 40px rgba(0,0,0,.3); }
 .about { margin-bottom: 2rem; }
 
+.compliment { display:flex; align-items:center; justify-content:center; margin-bottom: 1.2rem; }
+#compliment-text { margin: 0; font-weight: 600; }
+
 .gallery h2, .about h2, .notes h2 { font-size: 1.6rem; margin: .2rem 0 1rem; }
 .gallery .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 1rem; }
 .card { background: var(--card); border-radius: .8rem; overflow: hidden; border: 1px solid rgba(255,255,255,0.06); transition: transform .2s ease, box-shadow .2s ease; cursor: pointer; }
@@ -34,6 +37,43 @@ main { max-width: 1100px; margin: -3rem auto 4rem; padding: 0 1rem; }
 .lightbox img { max-width: 92vw; max-height: 70vh; border-radius: .6rem; box-shadow: 0 20px 60px rgba(0,0,0,.6); }
 .lightbox p { color: var(--text); margin-top: .6rem; }
 .lightbox .close { position: absolute; top: 16px; right: 16px; background: rgba(255,255,255,.12); color: #fff; border: none; font-size: 2rem; line-height: 1; border-radius: .5rem; width: 44px; height: 44px; cursor:pointer; }
+
+/* Love check styles */
+.love-check { margin-top: 2rem; }
+.love-actions { display:flex; gap:.6rem; align-items:center; margin-bottom:.6rem; position:relative; min-height:48px; }
+.btn.yes { background:#22c55e; color:#0b1220; }
+.btn.no { background:#ef4444; color:#fff; position:relative; }
+.love-result[hidden] { display:none; }
+.love-card { background: var(--card); border: 1px solid rgba(255,255,255,0.08); border-radius: .9rem; padding: 1rem; }
+.love-card h3 { margin: 0 0 .4rem; }
+.love-card p { margin: 0 0 .8rem; color: var(--muted); }
+.love-card figure { margin: 0 0 .8rem; }
+.love-card img { width:100%; max-height: 360px; object-fit: cover; border-radius:.6rem; display:block; box-shadow:0 10px 30px rgba(0,0,0,.35); }
+#love-note { width:100%; background:#0b1220; border:1px solid rgba(255,255,255,.12); color:var(--text); border-radius:.6rem; padding:.8rem; resize:vertical; }
+.btn.no.escape { position:absolute; transition: transform .18s ease, opacity .2s ease; }
+
+/* Gift box */
+.gift-section { margin-top: 2rem; text-align:center; }
+.gift-box { width: 120px; height: 120px; margin: 1rem auto; position: relative; cursor: pointer; }
+.gift-box .box-body { position:absolute; bottom:0; left:0; right:0; height: 80px; background:#eab308; border-radius: .4rem; box-shadow: inset 0 -6px 0 rgba(0,0,0,.2); }
+.gift-box .box-lid { position:absolute; top:0; left:0; right:0; height: 40px; background:#f59e0b; border-radius: .4rem .4rem 0 0; transform-origin: left center; transition: transform .4s ease; }
+.gift-box .ribbon { position:absolute; left:50%; top:0; bottom:0; width: 16px; transform:translateX(-50%); background:#ef4444; border-radius:.4rem; }
+.gift-box.open .box-lid { transform: rotate(-35deg); }
+.gift-reveal { max-width: 680px; margin: 0.5rem auto 0; }
+.gift-reveal img { width: 100%; border-radius:.8rem; box-shadow:0 10px 30px rgba(0,0,0,.35); }
+
+/* Floating hearts */
+.heart { position: fixed; pointer-events: none; z-index: 9999; font-size: 16px; will-change: transform, opacity; animation: floatUp 2.4s cubic-bezier(.22,.61,.36,1) forwards; }
+@keyframes floatUp { from { transform: translateY(0) scale(.8); opacity: .9; } to { transform: translateY(-120px) scale(1.4); opacity: 0; } }
+
+/* Unlock button & modal */
+.unlock-btn { position: fixed; right: 16px; bottom: 16px; width: 46px; height: 46px; border-radius: 50%; border: 1px solid rgba(255,255,255,.2); background: rgba(17,24,39,.8); color: #ff6b8b; font-size: 20px; cursor: pointer; box-shadow: 0 8px 30px rgba(0,0,0,.35); z-index: 60; }
+.unlock-modal { position: fixed; inset:0; display:none; align-items:center; justify-content:center; background: rgba(0,0,0,.6); z-index:70; }
+.unlock-modal[aria-hidden="false"] { display:flex; }
+.unlock-card { width:min(90vw,360px); background:#0b1220; color:var(--text); border:1px solid rgba(255,255,255,.1); border-radius:1rem; padding:1rem; }
+.unlock-card input { width:100%; padding:.8rem 1rem; margin:.6rem 0; background:#111827; border:1px solid rgba(255,255,255,.1); border-radius:.6rem; color:var(--text); }
+.unlock-actions { display:flex; gap:.6rem; }
+
 
 @media (prefers-color-scheme: light) {
   :root { --bg: #f8fafc; --card:#ffffff; --text:#0f172a; --muted:#475569; }
@@ -109,3 +149,4 @@ main { max-width: 1100px; margin: -3rem auto 4rem; padding: 0 1rem; }
   position: absolute;
   transition: transform .18s ease, opacity .2s ease;
 }
+
