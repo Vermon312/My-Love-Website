@@ -136,6 +136,30 @@
       </figure>
       <textarea id="love-note" placeholder="Write a little note for me here…" rows="3"></textarea>
 
+<!-- Gift Box surprise -->
+    <section class="gift-section">
+      <h2>A little surprise for you</h2>
+      <div class="gift-box" id="gift-box" aria-expanded="false">
+        <div class="box-body"></div>
+        <div class="box-lid"></div>
+        <div class="ribbon"></div>
+      </div>
+      <div class="gift-reveal" id="gift-reveal" hidden>
+        <figure>
+          <img src="assets/gift.jpg" alt="A sweet surprise" />
+          <figcaption>You’re the most special part of my day. 🎁</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="notes">
+      <h2>Notes</h2>
+      <ul>
+        <li>Tap any photo to view it larger.</li>
+        <li>You can add as many photos as you like—just drop them into the <code>/images</code> folder and duplicate a card.</li>
+        <li>Keep this private unless everyone in the photos is happy to share it.</li>
+      </ul>
+    </section>
 
 
   </main>
@@ -149,6 +173,32 @@
     <img id="lightbox-img" alt="Expanded view" />
     <p id="lightbox-caption"></p>
   </div>
+
+		<!-- Lightbox -->
+  <div id="lightbox" class="lightbox" aria-hidden="true" role="dialog">
+    <button class="close" aria-label="Close" onclick="closeLightbox()">×</button>
+    <img id="lightbox-img" alt="Expanded view" />
+    <p id="lightbox-caption"></p>
+  </div>
+
+  <!-- Hidden unlock button (heart) for secret page -->
+  <button id="unlock-btn" class="unlock-btn" title="Secret">
+    ❤️
+  </button>
+
+  <!-- Unlock modal -->
+  <div id="unlock-modal" class="unlock-modal" aria-hidden="true" role="dialog">
+    <div class="unlock-card">
+      <h3>Enter Passcode</h3>
+      <input id="unlock-input" type="password" placeholder="Passcode" />
+      <div class="unlock-actions">
+        <button class="btn" id="unlock-ok">Unlock</button>
+        <button class="btn btn-ghost" id="unlock-cancel">Cancel</button>
+      </div>
+      <p class="hint">Hint: something only we know 💙</p>
+    </div>
+  </div>
+
 
   <script src="script.js"></script>
 </body>
