@@ -268,21 +268,32 @@ main { max-width: 1100px; margin: -3rem auto 4rem; padding: 0 1rem; }
 /* =======================
    SITE-WIDE ZODIAC SKY
    (Cancer + Sagittarius)
-   Starts below hero only
+   Fullscreen, masked under hero
 ======================= */
 #page-sky {
-  position: fixed;          /* stays behind content as you scroll */
-  left: 0; right: 0; bottom: 0;
-  top: 60vh;                /* <-- JS will correct this to exact hero height */
-  z-index: 0;               /* behind all content */
-  pointer-events: none;     /* never blocks clicks */
+  position: fixed;
+  inset: 0;                    /* full screen */
+  z-index: 0;                  /* behind content */
+  pointer-events: none;
   overflow: hidden;
-  /* gentle night gradient so constellations are visible behind sections */
+
+  /* Night gradient */
   background:
     radial-gradient(900px 400px at 15% 0%, rgba(147,197,253,.18), transparent 60%),
     radial-gradient(700px 300px at 85% 5%, rgba(244,114,182,.15), transparent 60%),
     linear-gradient(180deg, #0b1220 0%, #0d1425 40%, #0f172a 100%);
+
+  /* Hide the area under the hero only (mask the top) */
+  /* Chrome/Safari */
+  -webkit-mask: linear-gradient(#0000 0 var(--heroH, 60vh), #000 0);
+  /* Firefox/standards */
+  mask: linear-gradient(#0000 0 var(--heroH, 60vh), #000 0);
 }
+
+/* Ensure stacking order: hero above sky; content above sky */
+body { position: relative; }
+.hero { position: relative; z-index: 2; }
+main, footer { position: relative; z-index: 1; }
 
 #page-sky svg { position: absolute; inset: 0; }
 
@@ -302,7 +313,7 @@ main { max-width: 1100px; margin: -3rem auto 4rem; padding: 0 1rem; }
   50%      { opacity: .45; transform: scale(0.7); }
 }
 
-/* Constellations for page sky (slightly thinner than hero) */
+/* Constellations for page sky */
 .p-const-line {
   stroke: rgba(255,255,255,.55);
   stroke-width: 1.2;
@@ -315,8 +326,8 @@ main { max-width: 1100px; margin: -3rem auto 4rem; padding: 0 1rem; }
   filter: drop-shadow(0 0 6px rgba(255,255,255,.65));
   opacity: .95;
 }
-.p-const-node.cancer      { filter: drop-shadow(0 0 6px rgba(96,165,250,.65)); }   /* soft blue */
-.p-const-node.sagittarius { filter: drop-shadow(0 0 6px rgba(244,114,182,.65)); }  /* soft pink */
+.p-const-node.cancer      { filter: drop-shadow(0 0 6px rgba(96,165,250,.65)); }
+.p-const-node.sagittarius { filter: drop-shadow(0 0 6px rgba(244,114,182,.65)); }
 .p-const-label {
   fill: #ffffff;
   opacity: .82;
@@ -324,13 +335,11 @@ main { max-width: 1100px; margin: -3rem auto 4rem; padding: 0 1rem; }
   filter: drop-shadow(0 0 4px rgba(0,0,0,.6));
 }
 
-/* Make sure hero sits above everything in the hero area */
-.hero { position: relative; z-index: 2; }
-
-/* Respect reduced motion */
+/* Reduced motion */
 @media (prefers-reduced-motion: reduce) {
   .p-star { animation: none !important; }
 }
+
 
 
 
