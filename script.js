@@ -372,6 +372,14 @@ document.addEventListener('keydown', (e) => {
 })();
 
 
+
+
+
+// -------- Year --------
+const y = document.getElementById('year');
+if (y) y.textContent = new Date().getFullYear();
+
+
 // ===== Gallery Zodiac Sky (Cancer + Sagittarius, DIFFERENT STYLE) =====
 (function initGalleryZodiacSky() {
   const sky = document.getElementById('gallery-sky');
@@ -456,10 +464,3 @@ document.addEventListener('keydown', (e) => {
   const sagNodes = [
     [700, 240], [740, 220], [780, 260], [760, 300],
     [720, 280], [
-
-
-// -------- Year --------
-const y = document.getElementById('year');
-if (y) y.textContent = new Date().getFullYear();
-
-
