@@ -1,214 +1,155 @@
 
-<!doctype html>
-<html lang="en">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Our Moments</title>
-  <meta name="description" content="A private gallery of our favorite moments." />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet" />
-  <!-- Only one stylesheet -->
-  <link rel="stylesheet" href="style.css" />
-</head>
-<body>
-  <header class="hero">
-    <div class="overlay"></div>
-    <!-- Floating hearts canvas/container -->
-    <div id="hearts-container" aria-hidden="true"></div>
+:root {
+  --bg: #0f172a;
+  --card: #111827;
+  --text: #e5e7eb;
+  --muted: #94a3b8;
+  --brand: #60a5fa;
+  --ok: #22c55e;
+  --danger: #ef4444;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; height: 100%; }
+body { font-family: 'Poppins', system-ui, -apple-system, Segoe UI, Roboto, sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; }
 
-    <div class="hero-content">
-      <h1>Our Moments 💙 I love you ∀ndrea</h1>
-      <p>A little gallery to remember the smiles. 💙</p>
-      <a class="btn" href="#gallery">View Gallery</a>
-    </div>
-  </header>
+.hero {
+  position: relative;
+  min-height: 60vh;
+  display:flex; align-items:center; justify-content:center;
+  background: url('assets/hero.jpg') center/cover no-repeat, linear-gradient(135deg, #0b1220, #0f172a);
+  overflow: hidden; /* allows floating hearts to stay inside hero */
+}
+.hero .overlay { position:absolute; inset:0; background: linear-gradient(to bottom, rgba(15,23,42,.5), rgba(15,23,42,.9)); }
+.hero-content { position:relative; text-align:center; padding: 2rem; z-index: 1; }
+.hero h1 { font-size: clamp(2rem, 6vw, 3.5rem); margin: 0 0 .5rem; color: #ffffff; }
+.hero p { color: #ffffff; margin: 0 0 1.5rem; }
+.btn { display:inline-block; background: var(--brand); color:#0b1220; padding:.8rem 1.2rem; border-radius:.6rem; text-decoration:none; font-weight:600; box-shadow: 0 10px 30px rgba(96,165,250,.3); cursor: pointer; border: 0; }
 
-  <main>
-    <section id="about" class="about">
-      <h2>About This Page</h2>
-      <p>
-        I made this mini-website to collect some of our favorite photos in one cozy place.
-        It’s simple, fast, and made with love.
-      </p>
-    </section>
+main { max-width: 1100px; margin: -3rem auto 4rem; padding: 0 1rem; }
+.about, .notes { background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.06); border-radius: 1rem; padding: 1.25rem 1.25rem; backdrop-filter: blur(6px); box-shadow: 0 10px 40px rgba(0,0,0,.3); }
+.about { margin-bottom: 2rem; }
 
-    <section id="gallery" class="gallery">
-      <h2>Gallery</h2>
-      <div class="grid">
-        <!-- Replace with your actual images -->
-        <figure class="card">
-          <img src="images/photo1.jpg" alt="Memory 1" loading="lazy" />
-          <figcaption>3rd meet? haha</figcaption>
-        </figure>
-        <figure class="card">
-          <img src="images/photo2.jpg" alt="Memory 2" loading="lazy" />
-          <figcaption>Meeting with Raymond</figcaption>
-        </figure>
-        <figure class="card">
-          <img src="images/photo3.jpg" alt="Memory 3" loading="lazy" />
-          <figcaption>Selfie haha</figcaption>
-        </figure>
-        <figure class="card">
-          <img src="images/photo4.jpg" alt="Memory 4" loading="lazy" />
-          <figcaption>2nd time kumain with me</figcaption>
-        </figure>
-        <figure class="card">
-          <img src="images/photo5.jpg" alt="Memory 5" loading="lazy" />
-          <figcaption>No comment! :)</figcaption>
-        </figure>
-        <figure class="card">
-          <img src="images/photo6.jpg" alt="Memory 6" loading="lazy" />
-          <figcaption>2nd time kumain with me kaya I capture moments</figcaption>
-        </figure>
-        <figure class="card">
-          <img src="images/photo7.jpg" alt="Memory 7" loading="lazy" />
-          <figcaption>I love you</figcaption>
-        </figure>
-        <figure class="card">
-          <img src="images/photo8.jpg" alt="Memory 8" loading="lazy" />
-          <figcaption>1st cuddle with pics</figcaption>
-        </figure>
-        <figure class="card">
-          <img src="images/photo9.jpg" alt="Memory 9" loading="lazy" />
-          <figcaption>More cuddle</figcaption>
-        </figure>
-        <figure class="card">
-          <img src="images/photo10.jpg" alt="Memory 10" loading="lazy" />
-          <figcaption>More cuddle</figcaption>
-        </figure>
-        <figure class="card">
-          <img src="images/photo11.jpg" alt="Memory 11" loading="lazy" />
-          <figcaption>More cuddle</figcaption>
-        </figure>
-        
-        <figure class="card">
-          <img src="images/photo17.jpg" alt="Memory 11" loading="lazy" />
-          <figcaption>3rd time Kain date Samyang!</figcaption>
-        </figure>
-          <figure class="card">
-          <img src="images/photo18.jpg" alt="Memory 11" loading="lazy" />
-          <figcaption>3rd time Kain date Samyang!</figcaption>
-        </figure>
-          <figure class="card">
-          <img src="images/photo19.jpg" alt="Memory 11" loading="lazy" />
-          <figcaption>3rd time Kain date Samyang!</figcaption>
-        </figure>
-        <figure class="card">
-          <img src="images/photo20.jpg" alt="Memory 11" loading="lazy" />
-          <figcaption>Those eyes! 🥺💋</figcaption>
-        </figure>
-        
-        <figure class="card">
-          <img src="images/photo12.jpg" alt="Memory 12" loading="lazy" />
-          <figcaption>4th time date with kain I love you</figcaption>
-        </figure>
-        <figure class="card">
-          <img src="images/photo13.jpg" alt="Memory 13" loading="lazy" />
-          <figcaption>So damn pretty</figcaption>
-        </figure>
-        <figure class="card">
-          <img src="images/photo14.jpg" alt="Memory 14" loading="lazy" />
-          <figcaption>I love you so much Baby!💖</figcaption>
-        </figure>
-        <figure class="card">
-          <img src="images/photo15.jpg" alt="Memory 15" loading="lazy" />
-          <figcaption>4th time date with kain I love you</figcaption>
-        </figure>
-        <figure class="card">
-          <img src="images/photo16.jpg" alt="Memory 16" loading="lazy" />
-          <figcaption>4th time date with kain I love you</figcaption>
-        </figure>
-      </div>
-    </section>
+.gallery h2, .about h2, .notes h2 { font-size: 1.6rem; margin: .2rem 0 1rem; }
+.gallery .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 1rem; }
+.card { background: var(--card); border-radius: .8rem; overflow: hidden; border: 1px solid rgba(255,255,255,0.06); transition: transform .2s ease, box-shadow .2s ease; cursor: pointer; }
+.card:hover { transform: translateY(-4px); box-shadow: 0 12px 30px rgba(0,0,0,.35); }
+.card img { width: 100%; height: 220px; object-fit: cover; display:block; }
+.card figcaption { padding: .6rem .8rem; color: var(--muted); font-size: .95rem; }
 
-    <section class="notes">
-      <h2>Notes</h2>
-      <ul>
-        <li>Tap any photo to view it larger.</li>
-        <li>You can add as many photos as you like—just drop them into the <code>/images</code> folder and duplicate a card.</li>
-        <li>Keep this private unless everyone in the photos is happy to share it.</li>
-      </ul>
-    </section>
+.footer { text-align:center; color: var(--muted); padding: 2rem 1rem; }
 
-    <!-- Love Check -->
-    <section id="love-check" class="love-check" aria-labelledby="love-title">
-      <h2 id="love-title">Do you love me?</h2>
-      <div class="love-actions">
-        <button class="btn yes" id="love-yes" aria-controls="love-result">Yes 💖</button>
-        <button class="btn no" id="love-no">No 😅</button>
-      </div>
+.lightbox { position: fixed; inset: 0; background: rgba(0,0,0,.7); display: none; align-items: center; justify-content: center; flex-direction: column; padding: 1rem; z-index: 50; }
+.lightbox img { max-width: 92vw; max-height: 70vh; border-radius: .6rem; box-shadow: 0 20px 60px rgba(0,0,0,.6); }
+.lightbox p { color: var(--text); margin-top: .6rem; }
+.lightbox .close { position: absolute; top: 16px; right: 16px; background: rgba(255,255,255,.12); color: #fff; border: none; font-size: 2rem; line-height: 1; border-radius: .5rem; width: 44px; height: 44px; cursor:pointer; }
 
-      <!-- Hidden result area -->
-      <div id="love-result" class="love-result" hidden>
-        <div class="love-card">
-          <h3>I love you more than you can imagine. 💙</h3>
-          <p>
-            Every moment with you makes my world brighter. Here’s one of my favorites:
-          </p>
-          <figure>
-            <img src="images/love-photo.jpg" alt="A favorite memory of us together" loading="lazy" />
-            <figcaption>Always you, always us.</figcaption>
-          </figure>
-          <textarea id="love-note" placeholder="Write a little note for me here…" rows="3"></textarea>
+@media (prefers-color-scheme: light) {
+  :root { --bg: #f8fafc; --card:#ffffff; --text:#0f172a; --muted:#475569; }
+  .hero { background: url('assets/hero.jpg') center/cover no-repeat, linear-gradient(135deg, #dbeafe, #e2e8f0); }
+}
 
-          <!-- Daily compliment -->
-          <div class="compliment-wrap">
-            <p id="compliment" class="compliment">Loading something sweet…</p>
-            <button id="compliment-refresh" class="btn btn-ghost" type="button" aria-label="Show another compliment">New compliment</button>
-          </div>
-        </div>
+/* --- Love Check Section --- */
+.love-check {
+  margin-top: 2rem;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 1rem;
+  padding: 1.25rem;
+}
+.love-check h2 { margin: 0 0 0.8rem; font-size: 1.4rem; }
 
-        <!-- Gift Box surprise -->
-        <section class="gift-section">
-          <h2>A little surprise for you</h2>
-          <div class="gift-box" id="gift-box" aria-expanded="false" role="button" tabindex="0" aria-label="Open gift">
-            <div class="box-body"></div>
-            <div class="box-lid"></div>
-            <div class="ribbon"></div>
-          </div>
-          <div class="gift-reveal" id="gift-reveal" hidden>
-            <figure>
-              <img src="assets/gift.jpg" alt="A sweet surprise" />
-              <figcaption>You’re the most special part of my day. 🎁</figcaption>
-            </figure>
-          </div>
-        </section>
-      </div><!-- /#love-result -->
-    </section><!-- /#love-check -->
-  </main>
+.love-actions {
+  display: flex; gap: .6rem; align-items: center; margin-bottom: .6rem;
+  position: relative; min-height: 48px; /* keeps layout stable while 'No' moves */
+}
+.btn.yes { background: var(--ok); color: #0b1220; }
+.btn.no  { background: var(--danger); color: #fff; position: relative; }
 
-  <footer class="footer">
-    <p>Private gallery — please don’t share without consent. created by ItsFreakingVermon © <span id="year"></span></p>
-  </footer>
+.love-result[hidden] { display: none; }
 
-  <!-- Lightbox (only one) -->
-  <div id="lightbox" class="lightbox" aria-hidden="true" role="dialog">
-    <button class="close" aria-label="Close" onclick="closeLightbox()">×</button>
-    <img id="lightbox-img" alt="Expanded view" />
-    <p id="lightbox-caption"></p>
-  </div>
+.love-card {
+  background: var(--card);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: .9rem;
+  padding: 1rem;
+}
+.love-card h3 { margin: 0 0 .4rem; }
+.love-card p  { margin: 0 0 .8rem; color: var(--muted); }
+.love-card figure { margin: 0 0 .8rem; }
+.love-card img {
+  width: 100%; max-height: 360px; object-fit: cover; border-radius: .6rem; display: block;
+  box-shadow: 0 10px 30px rgba(0,0,0,.35);
+}
+#love-note {
+  width: 100%; background: #0b1220; border: 1px solid rgba(255,255,255,0.12);
+  color: var(--text); border-radius: .6rem; padding: .8rem; resize: vertical;
+}
+.compliment-wrap { display: flex; align-items: center; gap: .6rem; margin-top: .8rem; }
+.compliment { margin: 0; color: #fce7f3; }
 
-  <!-- Secret unlock button + modal -->
-  <button id="unlock-btn" class="unlock-btn" title="Secret">
-    ❤️
-  </button>
+/* Fun: make the NO button 'escape' */
+.btn.no.escape {
+  position: absolute; transition: transform .18s ease, opacity .2s ease;
+}
 
-  <div id="unlock-modal" class="unlock-modal" aria-hidden="true" role="dialog">
-    <div class="unlock-card">
-      <h3>Enter Passcode</h3>
-      <input id="unlock-input" type="password" placeholder="Passcode" />
-      <div class="unlock-actions">
-        <button class="btn" id="unlock-ok">Unlock</button>
-        <button class="btn btn-ghost" id="unlock-cancel">Cancel</button>
-      </div>
-      <p class="hint">Hint: something only we know 💙</p>
-    </div>
-  </div>
+/* --- Floating Hearts in Hero --- */
+#hearts-container {
+  position: absolute; inset: 0; pointer-events: none; z-index: 0;
+}
+.heart-floating {
+  position: absolute; bottom: -20px;
+  font-size: 18px; opacity: 0; filter: drop-shadow(0 4px 10px rgba(255, 0, 102, .25));
+  animation: floatUp var(--dur, 6s) linear forwards;
+}
+@keyframes floatUp {
+  0%   { transform: translateY(0) translateX(0) scale(.8) rotate(0deg); opacity: 0; }
+  10%  { opacity: .8; }
+  60%  { opacity: .9; }
+  100% { transform: translateY(-85vh) translateX(var(--drift, 0px)) scale(1.1) rotate(12deg); opacity: 0; }
+}
 
-  <!-- Load script last -->
-  <script src="script.js"></script>
-</body>
-</html>
-``
+/* --- Rose Blossom emoji animation --- */
+.rose-blossom {
+  position: fixed; z-index: 60; pointer-events: none;
+  font-size: 26px; opacity: 0; transform: scale(0.1);
+  animation: roseBloom .9s ease-out forwards;
+}
+@keyframes roseBloom {
+  0%   { opacity: 0; transform: scale(.1) rotate(-15deg); }
+  60%  { opacity: 1; transform: scale(1.25) rotate(6deg); }
+  100% { opacity: 0; transform: scale(1) translateY(-20px) rotate(0deg); }
+}
+
+/* --- Gift Box --- */
+.gift-section { margin-top: 1rem; }
+.gift-box { width: 180px; height: 130px; margin: .5rem 0; position: relative; cursor: pointer; outline: none; }
+.gift-box .box-body { background: #1f2937; width: 100%; height: 100%; border-radius: .6rem; border: 1px solid rgba(255,255,255,0.1); }
+.gift-box .box-lid { position: absolute; top: -12px; left: 0; right: 0; height: 32px; background: #374151; border-radius: .6rem; transition: transform .35s ease; border: 1px solid rgba(255,255,255,0.12); }
+.gift-box .ribbon { position: absolute; top: 0; left: 50%; transform: translateX(-50%); width: 16px; height: 100%; background: #ef4444; border-radius: 6px; box-shadow: inset 0 0 0 3px rgba(255,255,255,.12); }
+.gift-box[aria-expanded="true"] .box-lid { transform: translateY(-20px) rotate(-6deg); }
+.gift-reveal img { width: 100%; max-width: 360px; border-radius: .6rem; box-shadow: 0 10px 30px rgba(0,0,0,.35); }
+
+/* --- Unlock button & modal --- */
+.unlock-btn {
+  position: fixed; right: 16px; bottom: 16px; z-index: 70;
+  background: rgba(255,255,255,.12); color: #fff; border: none;
+  width: 48px; height: 48px; border-radius: 999px; font-size: 20px; cursor: pointer;
+  backdrop-filter: blur(6px);
+}
+.unlock-modal {
+  position: fixed; inset: 0; background: rgba(0,0,0,.6); display: none; align-items: center; justify-content: center; z-index: 90;
+}
+.unlock-modal[aria-hidden="false"] { display: flex; }
+.unlock-card {
+  width: min(92vw, 360px); background: var(--card); border: 1px solid rgba(255,255,255,0.1);
+  border-radius: .8rem; padding: 1rem;
+}
+.unlock-card h3 { margin: 0 0 .6rem; }
+.unlock-card input {
+  width: 100%; padding: .7rem .8rem; border-radius: .6rem; border: 1px solid rgba(255,255,255,.14);
+  background: #0b1220; color: var(--text); margin-bottom: .6rem;
+}
+.unlock-actions { display: flex; gap: .6rem; }
+.hint { color: var(--muted); margin: .6rem 0 0; font-size: .9rem; }
+
+
