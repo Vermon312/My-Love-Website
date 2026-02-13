@@ -372,14 +372,6 @@ document.addEventListener('keydown', (e) => {
 })();
 
 
-
-
-
-// -------- Year --------
-const y = document.getElementById('year');
-if (y) y.textContent = new Date().getFullYear();
-
-
 /* ============================
    SITE-WIDE ZODIAC SKY
    (Cancer + Sagittarius)
@@ -525,5 +517,14 @@ if (y) y.textContent = new Date().getFullYear();
   });
 
 })();
+
+
+
+// -------- Year --------
+const y = document.getElementById('year');
+if (y) y.textContent = new Date().getFullYear();
+
+
+
 
 
