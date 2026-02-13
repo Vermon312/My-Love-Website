@@ -251,6 +251,127 @@ document.addEventListener('keydown', (e) => {
   }
 });
 
+// ===== Zodiac Sky (Cancer + Sagittarius) in hero =====
+(function initZodiacSky() {
+  const sky = document.getElementById('zodiac-sky');
+  if (!sky) return;
+
+  // Create background stars
+  const addStars = () => {
+    // clear old stars (in case of resize re-init)
+    Array.from(sky.querySelectorAll('.z-star')).forEach(n => n.remove());
+
+    const starCount = 80;
+    for (let i = 0; i < starCount; i++) {
+      const s = document.createElement('span');
+      s.className = 'z-star';
+      const size = 1 + Math.random() * 2; // 1-3px
+      const left = Math.random() * 100;   // vw-ish relative to container
+      const top  = Math.random() * 100;   // vh-ish relative to container
+      const twi  = (2.6 + Math.random() * 3.5).toFixed(1) + 's';
+      s.style.setProperty('--size', size + 'px');
+      s.style.setProperty('--twinkle', twi);
+      s.style.left = left + '%';
+      s.style.top  = top + '%';
+      sky.appendChild(s);
+    }
+  };
+
+  // Create an SVG layer for constellations
+  const svgNS = 'http://www.w3.org/2000/svg';
+  let svg = sky.querySelector('svg');
+  if (!svg) {
+    svg = document.createElementNS(svgNS, 'svg');
+    svg.setAttribute('width', '100%');
+    svg.setAttribute('height', '100%');
+    svg.setAttribute('viewBox', '0 0 1000 600'); // logical coords
+    sky.appendChild(svg);
+  }
+
+  // Helper to draw a constellation
+  function drawConstellation(name, nodes, edges, label, labelPos) {
+    // Group
+    const g = document.createElementNS(svgNS, 'g');
+    g.setAttribute('data-name', name);
+    svg.appendChild(g);
+
+    // Lines
+    edges.forEach(([a, b]) => {
+      const [x1, y1] = nodes[a];
+      const [x2, y2] = nodes[b];
+      const line = document.createElementNS(svgNS, 'line');
+      line.setAttribute('x1', x1);
+      line.setAttribute('y1', y1);
+      line.setAttribute('x2', x2);
+      line.setAttribute('y2', y2);
+      line.setAttribute('class', 'constellation-line');
+      g.appendChild(line);
+    });
+
+    // Nodes
+    nodes.forEach(([x, y], idx) => {
+      const c = document.createElementNS(svgNS, 'circle');
+      c.setAttribute('cx', x);
+      c.setAttribute('cy', y);
+      c.setAttribute('r', 3.2);
+      c.setAttribute('class', 'constellation-node pulse');
+      c.setAttribute('aria-label', `${name} star ${idx + 1}`);
+      g.appendChild(c);
+    });
+
+    // Label
+    if (label && labelPos) {
+      const text = document.createElementNS(svgNS, 'text');
+      text.setAttribute('x', labelPos[0]);
+      text.setAttribute('y', labelPos[1]);
+      text.setAttribute('class', 'constellation-label');
+      text.textContent = label;
+      g.appendChild(text);
+    }
+  }
+
+  // NOTE: The coordinates below are stylized, not astronomically precise.
+  // They’re arranged aesthetically inside a 1000x600 canvas.
+
+  // Cancer (stylized: subtle “Y”-like spread)
+  const cancerNodes = [
+    [210, 260], [250, 220], [300, 250], [340, 210],
+    [280, 300], [240, 310]
+  ];
+  const cancerEdges = [
+    [0,1],[1,2],[2,3],[2,4],[4,5]
+  ];
+  const cancerLabel = 'Cancer ♋';
+
+  // Sagittarius (stylized: archer pattern at right)
+  const sagNodes = [
+    [700, 240], [740, 220], [780, 260], [760, 300],
+    [720, 280], [800, 220], [835, 190], [860, 230],
+  ];
+  const sagEdges = [
+    [0,1],[1,2],[2,3],[3,4],[1,5],[5,6],[6,7]
+  ];
+  const sagLabel = 'Sagittarius ♐';
+
+  // Clear existing constellations on re-init
+  Array.from(svg.querySelectorAll('g')).forEach(n => n.remove());
+
+  // Draw constellations
+  drawConstellation('Cancer', cancerNodes, cancerEdges, cancerLabel, [200, 210]);
+  drawConstellation('Sagittarius', sagNodes, sagEdges, sagLabel, [700, 180]);
+
+  // Add stars once
+  addStars();
+
+  // Optional: re-add stars on resize (debounced)
+  let t;
+  window.addEventListener('resize', () => {
+    clearTimeout(t);
+    t = setTimeout(addStars, 250);
+  });
+})();
+
 // -------- Year --------
 const y = document.getElementById('year');
 if (y) y.textContent = new Date().getFullYear();
+
