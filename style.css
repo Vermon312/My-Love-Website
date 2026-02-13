@@ -225,6 +225,91 @@ main { max-width: 1100px; margin: -3rem auto 4rem; padding: 0 1rem; }
 }
 ``
 
+/* ==== Gallery Section Layout (ensure proper stacking) ==== */
+.gallery {
+  position: relative;            /* allows absolute sky inside */
+  isolation: isolate;            /* prevents blending leaking outside */
+  border-radius: 1rem;           /* optional rounded edges */
+  overflow: hidden;              /* clip sky within gallery block */
+  background: transparent;       /* actual bg handled by sky layer + inner card bg */
+  margin-top: 1.5rem;
+}
+
+/* Keep your existing about/notes cards look for inner content */
+.gallery-inner {
+  position: relative;
+  z-index: 1;                    /* above sky */
+  padding: 1.25rem 1.25rem;      /* match your other sections */
+  background: rgba(255,255,255,0.02);
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 1rem;
+  backdrop-filter: blur(6px);
+  box-shadow: 0 10px 40px rgba(0,0,0,.3);
+}
+
+/* ==== Gallery Zodiac Sky (different style) ==== */
+#gallery-sky {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+  /* subtle deep gradient different from hero */
+  background:
+    radial-gradient(900px 400px at 15% 0%, rgba(147,197,253,.18), transparent 60%),
+    radial-gradient(700px 300px at 85% 5%, rgba(244,114,182,.15), transparent 60%),
+    linear-gradient(180deg, #0b1220 0%, #0d1425 40%, #0f172a 100%);
+}
+
+/* Stars (smaller, calmer than hero) */
+.g-star {
+  position: absolute;
+  width: var(--size, 1.8px);
+  height: var(--size, 1.8px);
+  border-radius: 50%;
+  background: #ffffff;
+  opacity: 0.9;
+  filter: drop-shadow(0 0 4px rgba(255,255,255,.45));
+  animation: g-twinkle var(--twinkle, 3.2s) ease-in-out infinite;
+}
+@keyframes g-twinkle {
+  0%,100% { opacity: .9; transform: scale(1); }
+  50%     { opacity: .5; transform: scale(0.7); }
+}
+
+/* SVG container fills the block */
+#gallery-sky svg { position: absolute; inset: 0; }
+
+/* Constellations: dotted lines, colored glow (distinct from hero) */
+.g-const-line {
+  stroke: rgba(255,255,255,.6);
+  stroke-width: 1.2;
+  stroke-linecap: round;
+  stroke-dasharray: 2 6;                    /* dotted style */
+  filter: drop-shadow(0 0 6px rgba(180,200,255,.35));
+}
+
+.g-const-node {
+  r: 2.8;                                    /* node size used in JS, keep style too */
+  fill: #fff;
+  opacity: .95;
+  /* colored glows layered via filters in JS classes */
+}
+.g-const-node.libra { filter: drop-shadow(0 0 6px rgba(96,165,250,.65)); }       /* soft blue glow */
+.g-const-node.pisces { filter: drop-shadow(0 0 6px rgba(244,114,182,.65)); }     /* soft pink glow */
+
+/* Labels (optional, subtle) */
+.g-const-label {
+  fill: #ffffff;
+  opacity: .8;
+  font: 600 12px 'Poppins', system-ui, sans-serif;
+  filter: drop-shadow(0 0 4px rgba(0,0,0,.6));
+}
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .g-star { animation: none !important; }
+}
 
 
 
