@@ -247,6 +247,24 @@ main { max-width: 1100px; margin: -3rem auto 4rem; padding: 0 1rem; }
 }
 
 
+/* Heading fix */
+.title-combo {
+  display: inline-flex;
+  gap: .4rem;
+  align-items: baseline;
+  justify-content: center;
+  text-align: center;
+  font-size: clamp(1.2rem, 3vw, 2rem); /* <-- SMALLER SIZE HERE */
+  margin: 0 0 .5rem;
+  color: #ffffff;
+}
+
+.heart-emoji {
+  display: inline-block;
+  transform: translateY(0.08em);
+}
+
+
 
 
 
